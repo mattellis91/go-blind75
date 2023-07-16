@@ -32,5 +32,16 @@ func main() {
 }
 
 func twoSum(nums []int, target int) []int {
-    return []int{0, 1}
+    lookup := make(map[int]int) 
+
+	for i, v := range nums {
+		complematary := target - v
+		if val, ok := lookup[complematary]; ok {
+			return []int{val, i}
+		} else {
+			lookup[v] = i
+		}
+	}
+
+	return []int{}
 }
